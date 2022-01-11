@@ -12,6 +12,30 @@
 %%  when \code{prod(dim(.))} is larger than \eqn{2^{31} - 1}.
 %
 
+\section{Changes in version 1.4-1 (2022-01-06 r3429)}{
+  \subsection{Bug Fixes}{
+    \itemize{
+      \item \code{diag(x)} methods now mostly also keep \code{names} from
+      \code{dimnames(x)} by default and obey \code{names=*} more generally.
+    }
+  }
+  \subsection{New Features}{
+    \itemize{
+      \item New virtual class \code{packedMatrix} containing packed (dense)
+      symmetric and triangular matrices.  Methods for subscripting,
+      including \code{diag()}, notably keeping names by default and for
+      \code{t()} which are memory efficient, i.e., do not work via
+      unpacking, thanks to Mikael Jagan.
+
+      \item New \code{dmperm()} implementing a Dulmage-Mendelsohn
+      decomposition, thanks to the persistency of Mauricio Vargas (@uc.cl).
+
+      \item Export more low-level conversion utilities:
+      \code{.n2dgT}, \code{.m2ngCn}, \code{.m2ngTn}.
+    }
+  }
+}
+
 \section{Changes in version 1.4-0 (2021-12-08 r3419)}{
   \subsection{Bug Fixes}{
     \itemize{
@@ -76,7 +100,7 @@
       matrix transformations or operations which involved symmetric matrices.
 
       \item \code{as(<ddiMatrix>, "matrix")} no longer loses dimnames,
-      thanks to Mikael Jagan's report as Matrix bug #6751.      
+      thanks to Mikael Jagan's report as Matrix bug #6751.
     }
   }
   \subsection{Misc}{
